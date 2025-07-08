@@ -39,21 +39,19 @@
           </form>
 
           <!-- Sidebar Menu -->
-          <ul class="menu-list">
-            <li class="menu-item">
-              <a href="#" class="menu-link" onclick="loadContent('profile')">
-                <span class="material-symbols-rounded">person</span>
-                <span class="menu-label">Profile</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link" onclick="loadContent('minigame')">
-                <span class="material-symbols-rounded">sports_esports</span>
-                <span class="menu-label">Minigame</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+         <li class="menu-item">
+  <a href="#" class="menu-link" onclick="loadContent('profile')">
+    <span class="material-symbols-rounded">person</span>
+    <span class="menu-label">Profile</span>
+  </a>
+</li>
+<li class="menu-item">
+  <a href="#" class="menu-link" onclick="loadContent('minigame')">
+    <span class="material-symbols-rounded">sports_esports</span>
+    <span class="menu-label">Minigame</span>
+  </a>
+</li>
+
 
         <div class="sidebar-footer">
           <button class="theme-toggle">
@@ -70,21 +68,122 @@
 
       <!-- Main Content -->
       <div class="main-content" id="mainContent">
-        <h1 class="page-title">Dashboard Overview</h1>
-        <p class="card">Welcome! Click on the menu to view Profile or play a Minigame.</p>
-      </div>
-    </div>
+  <h1 class="page-title">Dashboard Overview</h1>
+  <p class="card">Welcome to your dashboard! Use the menu to navigate...</p>
+</div>
 
-    <script>
-      function loadContent(section) {
-        const main = document.getElementById("mainContent");
-        if (section === 'profile') {
-          main.innerHTML = `<iframe src="https://ttin14.github.io/trungtin.github.io/"></iframe>`;
-        } else if (section === 'minigame') {
-          main.innerHTML = `<h1 class="page-title">Minigame</h1><p class="card">Coming soon...</p>`;
-        }
-      }
-    </script>
-    <script src="script.js"></script>
+
+   <script>
+  function loadContent(section) {
+    const container = document.getElementById("mainContent");
+    if (section === "profile") {
+      container.innerHTML = `
+        <h1 class="page-title">Profile</h1>
+        <iframe src="https://ttin14.github.io/trungtin.github.io/" style="width:100%; height:80vh; border:none;"></iframe>
+      `;
+    } else if (section === "minigame") {
+      container.innerHTML = `
+        <h1 class="page-title">Minigame</h1>
+        <div class="game-buttons">
+          <button onclick="showGame('memory')">Memory Card Game</button>
+          <button onclick="showGame('drawing')">Drawing App</button>
+        </div>
+        <div id="gameArea" class="game-container"></div>
+      `;
+    }
+  }
+
+  function showGame(type) {
+    const gameArea = document.getElementById("gameArea");
+    if (type === 'memory') {
+      gameArea.innerHTML = `
+        <div class="wrapper">
+          <ul class="cards">
+            ${generateCards()}
+          </ul>
+        </div>
+      `;
+    } else if (type === 'drawing') {
+      gameArea.innerHTML = `
+        <div class="container">
+          <section class="tools-board">
+            <div class="row">
+              <label class="title">Shapes</label>
+              <ul class="options">
+                <li class="option tool" id="rectangle">
+                  <img src="icons/rectangle.svg" alt="">
+                  <span>Rectangle</span>
+                </li>
+                <li class="option tool" id="circle">
+                  <img src="icons/circle.svg" alt="">
+                  <span>Circle</span>
+                </li>
+                <li class="option tool" id="triangle">
+                  <img src="icons/triangle.svg" alt="">
+                  <span>Triangle</span>
+                </li>
+                <li class="option">
+                  <input type="checkbox" id="fill-color">
+                  <label for="fill-color">Fill color</label>
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <label class="title">Options</label>
+              <ul class="options">
+                <li class="option active tool" id="brush">
+                  <img src="icons/brush.svg" alt="">
+                  <span>Brush</span>
+                </li>
+                <li class="option tool" id="eraser">
+                  <img src="icons/eraser.svg" alt="">
+                  <span>Eraser</span>
+                </li>
+                <li class="option">
+                  <input type="range" id="size-slider" min="1" max="30" value="5">
+                </li>
+              </ul>
+            </div>
+            <div class="row colors">
+              <label class="title">Colors</label>
+              <ul class="options">
+                <li class="option"></li>
+                <li class="option selected"></li>
+                <li class="option"></li>
+                <li class="option"></li>
+                <li class="option">
+                  <input type="color" id="color-picker" value="#4A98F7">
+                </li>
+              </ul>
+            </div>
+            <div class="row buttons">
+              <button class="clear-canvas">Clear Canvas</button>
+              <button class="save-img">Save As Image</button>
+            </div>
+          </section>
+          <section class="drawing-board">
+            <canvas></canvas>
+          </section>
+        </div>
+      `;
+    }
+  }
+
+  function generateCards() {
+    const imgs = ['img-1.png','img-2.png','img-3.png','img-4.png','img-5.png','img-6.png'];
+    const cards = imgs.concat(imgs); // double cards
+    return cards.map(img => `
+      <li class="card">
+        <div class="view front-view">
+          <img src="images/que_icon.svg" alt="icon">
+        </div>
+        <div class="view back-view">
+          <img src="images/${img}" alt="card-img">
+        </div>
+      </li>
+    `).join('');
+  }
+</script>
+
   </body>
 </html>
