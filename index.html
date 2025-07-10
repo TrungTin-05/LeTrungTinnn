@@ -117,39 +117,25 @@
       </div>
     </aside>
 
-    <!-- Main Content -->
-    <div class="main-content" id="main-content">
-      <h1 class="page-title">Dashboard Overview</h1>
-      <p class="card">Welcome to your dashboard! Use the menu to navigate, toggle the sidebar, or switch between light and dark themes to personalize your experience.</p>
-    </div>
-  </div>
+   <!-- Site main content -->
+<div class="main-content" id="profile-content">
+  <h1 class="page-title">PROFILE</h1>
+  <p class="card"><strong>ABOUT MYSELF:</strong></p>
+  <iframe src="index0.html" width="100%" height="600px" style="border:none;"></iframe>
+</div>
 
-  <script>
-    function loadContent(page) {
-      const content = document.getElementById('main-content');
-      if (page === 'profile') {
-        content.innerHTML = `
-          <h1 class="page-title">Profile</h1>
-          <iframe src="https://ttin14.github.io/trungtin.github.io/"></iframe>
-        `;
-      } else if (page === 'paint') {
-        content.innerHTML = `
-          <h1 class="page-title">Drawing App</h1>
-          <p class="card">Paint game content will go here.</p>
-        `;
-      } else if (page === 'memory') {
-        content.innerHTML = `
-          <h1 class="page-title">Memory Card Game</h1>
-          <p class="card">Memory card game content will go here.</p>
-        `;
-      } else {
-        content.innerHTML = `
-          <h1 class="page-title">Dashboard Overview</h1>
-          <p class="card">Welcome to your dashboard! Use the menu to navigate, toggle the sidebar, or switch between light and dark themes to personalize your experience.</p>
-        `;
-      }
-    }
-  </script>
-  <script src="script.js"></script>
+<div class="main-content hidden" id="game-content">
+  <h1 class="page-title">GAME</h1>
+  <p class="card"><strong>GOOD LUCK</strong></p>
+  <iframe src="memory.html" width="100%" height="600px" style="border:none;"></iframe>
+</div>
+
+<div class="main-content hidden" id="draw-content">
+  <h1 class="page-title">DRAWING</h1>
+  <p class="card"><strong>wowww</strong></p>
+  <iframe src="draw.html" width="100%" height="600px" style="border:none;"></iframe>
+</div>
+
+<script src="sidebar.js"></script>
 </body>
 </html>
