@@ -12,9 +12,6 @@
       height: 600px;
       border: none;
     }
-    .hidden {
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -44,60 +41,65 @@
         <!-- Sidebar Menu -->
         <ul class="menu-list">
           <li class="menu-item">
-            <a href="#" class="menu-link active" onclick="loadContent('profile')">
+            <a href="#" class="menu-link active" onclick="loadContent('dashboard')">
+              <span class="material-symbols-rounded">dashboard</span>
+              <span class="menu-label">Dashboard</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link" onclick="loadContent('profile')">
               <span class="material-symbols-rounded">person</span>
               <span class="menu-label">Profile</span>
             </a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-link" onclick="loadContent('draw')">
+            <a href="#" class="menu-link" onclick="loadContent('paint')">
               <span class="material-symbols-rounded">brush</span>
               <span class="menu-label">Drawing App</span>
             </a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-link" onclick="loadContent('game')">
+            <a href="#" class="menu-link" onclick="loadContent('memory')">
               <span class="material-symbols-rounded">memory</span>
               <span class="menu-label">Memory Card</span>
             </a>
           </li>
-          <!-- Giữ nguyên các mục khác -->
           <li class="menu-item">
-            <a href="#" class="menu-link">
-              <span class="material-symbols-rounded">insert_chart</span>
-              <span class="menu-label">Analytics</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link">
-              <span class="material-symbols-rounded">notifications</span>
-              <span class="menu-label">Notifications</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link">
-              <span class="material-symbols-rounded">star</span>
-              <span class="menu-label">Favourites</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link">
-              <span class="material-symbols-rounded">storefront</span>
-              <span class="menu-label">Products</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link">
-              <span class="material-symbols-rounded">group</span>
-              <span class="menu-label">Customers</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link">
-              <span class="material-symbols-rounded">settings</span>
-              <span class="menu-label">Settings</span>
-            </a>
-          </li>
+              <a href="#" class="menu-link">
+                <span class="material-symbols-rounded">insert_chart</span>
+                <span class="menu-label">Analytics</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#" class="menu-link">
+                <span class="material-symbols-rounded">notifications</span>
+                <span class="menu-label">Notifications</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#" class="menu-link">
+                <span class="material-symbols-rounded">star</span>
+                <span class="menu-label">Favourites</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#" class="menu-link">
+                <span class="material-symbols-rounded">storefront</span>
+                <span class="menu-label">Products</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#" class="menu-link">
+                <span class="material-symbols-rounded">group</span>
+                <span class="menu-label">Customers</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#" class="menu-link">
+                <span class="material-symbols-rounded">settings</span>
+                <span class="menu-label">Settings</span>
+              </a>
+            </li>
         </ul>
       </div>
 
@@ -115,39 +117,39 @@
       </div>
     </aside>
 
-    <!-- Main Content Sections -->
-    <div class="main-content" id="profile-content">
-      <h1 class="page-title">PROFILE</h1>
-      <p class="card"><strong>ABOUT MYSELF:</strong></p>
-      <iframe src="index0.html"></iframe>
-    </div>
-
-    <div class="main-content hidden" id="game-content">
-      <h1 class="page-title">GAME</h1>
-      <p class="card"><strong>GOOD LUCK</strong></p>
-      <iframe src="memory.html"></iframe>
-    </div>
-
-    <div class="main-content hidden" id="draw-content">
-      <h1 class="page-title">DRAWING</h1>
-      <p class="card"><strong>wowww</strong></p>
-      <iframe src="draw.html"></iframe>
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+      <h1 class="page-title">Dashboard Overview</h1>
+      <p class="card">Welcome to your dashboard! Use the menu to navigate, toggle the sidebar, or switch between light and dark themes to personalize your experience.</p>
     </div>
   </div>
 
-  <!-- JS: Load content function -->
   <script>
-    function loadContent(target) {
-      // Hide all
-      document.querySelectorAll('.main-content').forEach(section => {
-        section.classList.add('hidden');
-      });
-      // Show selected
-      const activeSection = document.getElementById(`${target}-content`);
-      if (activeSection) activeSection.classList.remove('hidden');
+    function loadContent(page) {
+      const content = document.getElementById('main-content');
+      if (page === 'profile') {
+        content.innerHTML = `
+          <h1 class="page-title">Profile</h1>
+          <iframe src="https://ttin14.github.io/trungtin.github.io/"></iframe>
+        `;
+      } else if (page === 'paint') {
+        content.innerHTML = `
+          <h1 class="page-title">Drawing App</h1>
+          <p class="card">Paint game content will go here.</p>
+        `;
+      } else if (page === 'memory') {
+        content.innerHTML = `
+          <h1 class="page-title">Memory Card Game</h1>
+          <p class="card">Memory card game content will go here.</p>
+        `;
+      } else {
+        content.innerHTML = `
+          <h1 class="page-title">Dashboard Overview</h1>
+          <p class="card">Welcome to your dashboard! Use the menu to navigate, toggle the sidebar, or switch between light and dark themes to personalize your experience.</p>
+        `;
+      }
     }
   </script>
-
-  <script src="sidebar.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
