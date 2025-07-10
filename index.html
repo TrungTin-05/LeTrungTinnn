@@ -12,6 +12,9 @@
       height: 600px;
       border: none;
     }
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -41,65 +44,60 @@
         <!-- Sidebar Menu -->
         <ul class="menu-list">
           <li class="menu-item">
-            <a href="#" class="menu-link active" onclick="loadContent('dashboard')">
-              <span class="material-symbols-rounded">dashboard</span>
-              <span class="menu-label">Dashboard</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link" onclick="loadContent('profile')">
+            <a href="#" class="menu-link active" onclick="loadContent('profile')">
               <span class="material-symbols-rounded">person</span>
               <span class="menu-label">Profile</span>
             </a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-link" onclick="loadContent('paint')">
+            <a href="#" class="menu-link" onclick="loadContent('draw')">
               <span class="material-symbols-rounded">brush</span>
               <span class="menu-label">Drawing App</span>
             </a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-link" onclick="loadContent('memory')">
+            <a href="#" class="menu-link" onclick="loadContent('game')">
               <span class="material-symbols-rounded">memory</span>
               <span class="menu-label">Memory Card</span>
             </a>
           </li>
+          <!-- Giữ nguyên các mục khác -->
           <li class="menu-item">
-              <a href="#" class="menu-link">
-                <span class="material-symbols-rounded">insert_chart</span>
-                <span class="menu-label">Analytics</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">
-                <span class="material-symbols-rounded">notifications</span>
-                <span class="menu-label">Notifications</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">
-                <span class="material-symbols-rounded">star</span>
-                <span class="menu-label">Favourites</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">
-                <span class="material-symbols-rounded">storefront</span>
-                <span class="menu-label">Products</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">
-                <span class="material-symbols-rounded">group</span>
-                <span class="menu-label">Customers</span>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="#" class="menu-link">
-                <span class="material-symbols-rounded">settings</span>
-                <span class="menu-label">Settings</span>
-              </a>
-            </li>
+            <a href="#" class="menu-link">
+              <span class="material-symbols-rounded">insert_chart</span>
+              <span class="menu-label">Analytics</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <span class="material-symbols-rounded">notifications</span>
+              <span class="menu-label">Notifications</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <span class="material-symbols-rounded">star</span>
+              <span class="menu-label">Favourites</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <span class="material-symbols-rounded">storefront</span>
+              <span class="menu-label">Products</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <span class="material-symbols-rounded">group</span>
+              <span class="menu-label">Customers</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <span class="material-symbols-rounded">settings</span>
+              <span class="menu-label">Settings</span>
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -117,25 +115,39 @@
       </div>
     </aside>
 
-   <!-- Site main content -->
-<div class="main-content" id="profile-content">
-  <h1 class="page-title">PROFILE</h1>
-  <p class="card"><strong>ABOUT MYSELF:</strong></p>
-  <iframe src="https://ttin14.github.io/trungtin.github.io/" width="100%" height="600px" style="border:none;"></iframe>
-</div>
+    <!-- Main Content Sections -->
+    <div class="main-content" id="profile-content">
+      <h1 class="page-title">PROFILE</h1>
+      <p class="card"><strong>ABOUT MYSELF:</strong></p>
+      <iframe src="index0.html"></iframe>
+    </div>
 
-<div class="main-content hidden" id="game-content">
-  <h1 class="page-title">GAME</h1>
-  <p class="card"><strong>GOOD LUCK</strong></p>
-  <iframe src="memory.html" width="100%" height="600px" style="border:none;"></iframe>
-</div>
+    <div class="main-content hidden" id="game-content">
+      <h1 class="page-title">GAME</h1>
+      <p class="card"><strong>GOOD LUCK</strong></p>
+      <iframe src="memory.html"></iframe>
+    </div>
 
-<div class="main-content hidden" id="draw-content">
-  <h1 class="page-title">DRAWING</h1>
-  <p class="card"><strong>wowww</strong></p>
-  <iframe src="draw.html" width="100%" height="600px" style="border:none;"></iframe>
-</div>
+    <div class="main-content hidden" id="draw-content">
+      <h1 class="page-title">DRAWING</h1>
+      <p class="card"><strong>wowww</strong></p>
+      <iframe src="draw.html"></iframe>
+    </div>
+  </div>
 
-<script src="sidebar.js"></script>
+  <!-- JS: Load content function -->
+  <script>
+    function loadContent(target) {
+      // Hide all
+      document.querySelectorAll('.main-content').forEach(section => {
+        section.classList.add('hidden');
+      });
+      // Show selected
+      const activeSection = document.getElementById(`${target}-content`);
+      if (activeSection) activeSection.classList.remove('hidden');
+    }
+  </script>
+
+  <script src="sidebar.js"></script>
 </body>
 </html>
